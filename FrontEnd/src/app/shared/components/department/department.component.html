@@ -1,0 +1,27 @@
+
+
+
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Distrito</th>
+      <th>País</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr *ngFor="let d of department">
+      <td>{{d.descripcion}}</td>
+      <td>{{d.distrito}}</td>
+      <td>{{d.pais}}</td>
+      <td >
+          <button (click)="editDepartment(d.id_departamento)" class="btn btn-warning">
+             </button> 
+          <button (click)="deleteDepartment(d.id_departamento)" class="btn btn-danger">
+              </button>
+      </td>
+
+  </tr>
+  </tbody>
+</table>

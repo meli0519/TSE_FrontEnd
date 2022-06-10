@@ -8,14 +8,16 @@ import { MainComponent } from './shared/components/main/main.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './shared/template/footer/footer.component';
-import { NavbarComponent } from './shared/template/navbar/navbar.component'
+import { NavbarComponent } from './shared/template/navbar/navbar.component';
+import { DepartmentComponent } from './shared/components/department/department.component'
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,

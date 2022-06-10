@@ -1,15 +1,47 @@
 
-  <div class="navbar-fixed">
+  <div class="">
+    
+    
+    <ul id="reportes" class="dropdown-content">
+      <li><a [routerLink]="['/department']"  >Departamento</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Usuarios</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Cantón</a></li>
+    </ul>
+
+    <ul id="reportes2" class="dropdown-content">
+      <li><a href="#">Departamento</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Usuarios</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Cantón</a></li>
+    </ul>
+
+    
+
     <nav style="background-color: black;">
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Logo</a>
+        <a href="#" style="z-index: auto;" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class=" hide-on-med-and-down">
           <li style="margin-left: 100px;"><a href="#">Solicitudes</a></li>
-          <li [ngStyle]="permiss" ><a href="#">Reportes</a></li>
+          <li [ngStyle]="permiss" ><a class="dropdown-trigger"  data-target="reportes">Dropdown<i class="material-icons right">arrow_drop_down</i></a> </li>
           <li [ngStyle]="permiss" ><a href="#">Cubo</a></li>
-          <li class="right"><a href="badges.html">Salir</a></li>
+          <li class="right"><button (click)="exit()">Salir</button></li>
         </ul>
       </div>
     </nav>
+
+    
+
+    <ul class="sidenav"  id="mobile-demo">
+      <li ><a href="#">Solicitudes</a></li>
+      <li [ngStyle]="permiss" ><a class="dropdown-trigger"  data-target="reportes2">Dropdown<i class="material-icons right">arrow_drop_down</i></a> </li>
+      <li [ngStyle]="permiss" ><a href="#">Cubo</a></li>
+      <li ><button (click)="exit()">Salir</button></li>
+    </ul> 
   </div>
-        
+  
+  
+    

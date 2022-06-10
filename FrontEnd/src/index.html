@@ -12,10 +12,27 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
+     
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+
+    
+  </app-root>
    
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+    
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
    
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(elems);
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(elems);
+     var elems = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(elems); 
+ });
+ </script>
+
 </body>
 </html>
