@@ -9,6 +9,8 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './shared/template/footer/footer.component';
 import { NavbarComponent } from './shared/template/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -17,15 +19,14 @@ import { NavbarComponent } from './shared/template/navbar/navbar.component';
     MainComponent,
     FooterComponent,
     NavbarComponent,
-   
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
