@@ -1,27 +1,74 @@
 
-<h1>hola mundo</h1>
+<div class="row">
+  <div class="col s7">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Distrito</th>
+          <th>País</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+         <tr *ngFor="let d of department">
+          <td>{{d.descripcion}}</td>
+          <td>{{d.distrito}}</td>
+          <td>{{d.pais}}</td>
+          <td >
+              <button (click)="editDepartment(d.id_departamento)" class="btn lime ">
+                <i class="material-icons">update</i> </button> 
+              <button (click)="deleteDepartment(d.id_departamento)" class="btn red accent-4">
+                <i class="material-icons">delete_forever</i></button>
+          </td>
+    
+      </tr> 
+      </tbody>
+    </table>
+  </div>
+  <div class="col s1">
 
-<table class="responsive-table">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Distrito</th>
-      <th>País</th>
-    </tr>
-  </thead>
+  </div>
+
+
   
-  <tbody>
-   <!--  <tr *ngFor="let d of department">
-      <td>{{d.descripcion}}</td>
-      <td>{{d.distrito}}</td>
-      <td>{{d.pais}}</td>
-      <td >
-          <button (click)="editDepartment(d.id_departamento)" class="btn btn-warning">
-             </button> 
-          <button (click)="deleteDepartment(d.id_departamento)" class="btn btn-danger">
+    <div class="col s4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+            <h5>Insertar nuevo departamento</h5>
+            <form [formGroup]="departmentForm" (ngSubmit)="sendDepartment(departmentForm.value)" method="post">
+              <div class="input-field col s12">
+                <input type="text" id="department" formControlName="department" class="validate" required>
+                <label for="department">Nombre de departamento</label>
+              </div>
+              
+              <div class="input-field col s12">
+                <input type="text" id="pais" formControlName="pais" class="validate" required>
+                <label for="pais" >País</label>
+              </div>
+              
+              <div class="input-field col s12 selectDistrito">
+                <!--  <select id="SelectDistrito"  formControlName="SelectDistrito"]>
+                  
+                   <option  *ngFor="let dis of distritos" [value]="dis.id_distrito"> 
+                    {{dis.descripcion}}
+                  </option> 
+                  <option value="">hola</option> 
+                </select>  -->
+                <label>Distritos</label>
+              </div>
+              <hr>
+              <button class="btn waves-effect waves-light blue" type="submit" name="action">Enviar
+                <i class="material-icons right">send</i>
               </button>
-      </td>
+            </form>
+         
 
-  </tr> -->
-  </tbody>
-</table>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+

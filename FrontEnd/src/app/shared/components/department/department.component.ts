@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DepartmentServiceService} from '../../service/SDepartment/department-service.service';
 import {DepartmentI} from '../..//Models/department.interface';
+import {FormGroup, FormControl, Validator, Validators} from '@angular/forms';
+declare var M: any
 import Swal from 'sweetalert2'
 @Component({
   selector: 'app-department',
@@ -9,13 +11,25 @@ import Swal from 'sweetalert2'
 })
 export class DepartmentComponent implements OnInit {
 
-  department: DepartmentI;
+  distritos: any
+  department: any;
+  departmentForm = new FormGroup({
+    department: new FormControl('', Validators.required),
+    pais: new FormControl('', Validators.required),
+    selectDistrit: new FormControl('', Validators.required)
+  });
 
   constructor(private service: DepartmentServiceService ) { }
 
   ngOnInit(): void {
+
+    var elems = document.querySelectorAll('select');
+     M.FormSelect.init(elems);
+
     console.log("entro");
-    //this.getData();
+    this.getDistrito();
+    this.getData();
+   
   }
 
   getData(){
@@ -25,6 +39,19 @@ export class DepartmentComponent implements OnInit {
     }) 
   }
 
+  getDistrito(){
+    this.service.getDistritos().subscribe((res: any) => {
+      console.log(res);
+      this.distritos = res;
+      
+    }) 
+  }
+
+  sendDepartment(form: any){
+    this.service.sendDepartment(form).subscribe(data =>{
+      console.log(data);
+    });
+  }
 
   editDepartment(idDepartment: Number){
         console.log(idDepartment);
@@ -51,9 +78,10 @@ export class DepartmentComponent implements OnInit {
           timer: 1500
         })
       }
+      console.log(idDepartment);
        this.service.deleteDepartmentByID(idDepartment).subscribe((res: any) => {
         console.log('eliminado exitosamente')
-        
+        this.ngOnInit();
       }) 
     })
   }

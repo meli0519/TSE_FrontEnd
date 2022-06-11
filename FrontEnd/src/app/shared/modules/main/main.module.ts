@@ -3,7 +3,8 @@ import { MainRoutingModule } from './main-routing.module';
 import { DepartmentComponent } from '../../components/department/department.component';
 import { PruebaComponent } from '../../components/prueba/prueba.component';
 import { CommonModule } from '@angular/common';
-
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,12 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    ReactiveFormsModule, 
+    FormsModule,
+    HttpClientModule
+    
+    
 
   ]
 })
