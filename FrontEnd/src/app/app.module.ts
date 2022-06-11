@@ -9,7 +9,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './shared/template/footer/footer.component';
 import { NavbarComponent } from './shared/template/navbar/navbar.component';
-import { DepartmentComponent } from './shared/components/department/department.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +17,8 @@ import { DepartmentComponent } from './shared/components/department/department.c
     MainComponent,
     FooterComponent,
     NavbarComponent,
-    DepartmentComponent
+   
+    
   ],
   imports: [
     BrowserModule,
