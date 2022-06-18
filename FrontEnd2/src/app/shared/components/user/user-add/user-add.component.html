@@ -1,5 +1,100 @@
 <div mat-dialog-content>
     <div mat-dialog-actions class="mat-dialog-actions">
-        holi
+        <form [formGroup]="addUser" (ngSubmit)="addUserForm()" #formDir="ngForm">
+            <div class='row'>
+                <div class='col-sm-6'>
+                    <label for='cedula' class="form-label">Cedula</label>
+                    <input class="form-control" type='text' formControlName="cedula" id='cedula' required />
+                </div>
+                <div class='col-sm-6'>
+                    <label for='nombre' class="form-label">Nombre</label>
+                    <input class='form-control' type='text' formControlName="nombre" id='nombre' required />
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class='col-sm-6'>
+                    <label for='apellidos' class="form-label">Apellidos</label>
+                    <input class='form-control' type='text' formControlName="apellidos" id='apellidos' required />
+                </div>
+                <div class='col-sm-6'>
+                    <label for='fechaNacimiento' class="form-label">fecha Nacimiento</label>
+                    <input class='form-control' type='date' formControlName="fechaNacimiento" id='fechaNacimiento'
+                        required />
+                </div>
+            </div>
+
+
+            <div class='row'>
+                <div class='col-sm-6'>
+                    <label class="form-label" for="sexo">Sexo:</label>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" formControlName="sexo" id='sexo' value="false" />
+                            <span>Femenino</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" formControlName="sexo" id='sexo' value="true" />
+                            <span>Masculino</span>
+                        </label>
+                    </div> 
+                </div>
+                <div class='col-sm-6'>
+                    <label for='celular' class="form-label">Celular</label>
+                    <input class='form-control' type='text' formControlName="celular" id='celular' required />
+                </div>
+            </div>
+
+
+            <div class='row'>
+                <div class='col-sm-6'>
+                    <label class="form-label"> Seleccione un departamento: </label>
+                    <select  class="form-select form-select-lg mb-3" formControlName="departamento">
+                        <option value="1" *ngFor="let d of departamentos" [value]=d.id_departamento>
+                            {{d.descripcion}}</option>
+                    </select>
+                    
+                </div>
+                <div class='col-sm-6'>
+                    <label class="form-label"> Seleccione un distrito: </label>
+                    <select  class="form-select form-select-lg mb-3" formControlName="distrito" >
+                        <option *ngFor="let d of distritos" [value]=d.id_distrito>
+                            {{d.descripcion}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class='row'>
+                <div class='col-sm-6'>
+                    <label  class="form-label" for='correo'>Correo</label>
+                    <input class='form-control' type='text' formControlName="correo" id='correo' required />
+                </div>
+                <div class=' col-sm-6'>
+                    <label  class="form-label" for='pasword'>Password</label>
+                    <input class='form-control' type='text' formControlName="pasword" id='pasword' required />  
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class='col-sm-6'>
+                    <input type="file" class="form-control" (change)="getFile($event)">
+                </div>
+                <div class="col-sm-6" *ngIf="preview">
+                    <img width="100px" [src]="preview" alt="">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="offset-sm-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <Button mat-button [mat-dialog-close]="true" class="btn btn-danger">Cancelar</Button>
+                </div>
+            </div>
+
+        </form>
     </div>
 </div>

@@ -16,11 +16,12 @@ export class UserServiceService {
 
   deleteUser(id: number){
 
-    return this.http.delete(URL+'delete/'+id);
+    return this.http.delete(this.URL+'delete/'+id);
   }
 
   sendUser(user: any): Observable<any>{
-    return this.http.post(URL+'sendDepartment',user);
+    console.log(user);
+    return this.http.post(this.URL+'add',user);
   }
 
 }

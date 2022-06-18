@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MainRoutingModule } from './main-routing.module';
 import { DepartmentComponent } from '../../components/department/department.component';
 import { UserComponent } from '../../components/user/user.component';
@@ -23,7 +23,9 @@ import { UserEditComponent } from '../../components/user/user-edit/user-edit.com
     MainRoutingModule,
     HttpClientModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule, 
+    FormsModule
   ]
 })
 export class MainModule { }

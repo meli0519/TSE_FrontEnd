@@ -3,8 +3,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/shared/service/SUser/user-service.service';
+import { DepartmentServiceService } from 'src/app/shared/service/SDepartment/department-service.service';
 import { DepartmentI } from 'src/app/shared/models/department.interface';
 import { DomSanitizer } from '@angular/platform-browser'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-user-add',
@@ -39,19 +41,19 @@ export class UserAddComponent implements OnInit {
 
   constructor(public dialog: MatDialogRef<UserAddComponent>, @Inject(MAT_DIALOG_DATA) public message: string,
     private service: UserServiceService, public fb: FormBuilder, private router: Router,
-    private route: ActivatedRoute, private sanitizer: DomSanitizer) {
+    private route: ActivatedRoute, private sanitizer: DomSanitizer, private depserv: DepartmentServiceService) {
 
     this.addUser = this.createFormGroup();
   }
 
   ngOnInit(): void {
 
-    /*   this.getDepartment();
-      this.getDistritos() ; */
+    this.getDepartment();
+    this.getDistritos();
 
   }
 
-  /* getDepartment() {
+  getDepartment() {
     this.depserv.getDepartment().subscribe((res: any) => {
       this.departamentos = res;
     })
@@ -61,7 +63,7 @@ export class UserAddComponent implements OnInit {
     this.depserv.getDistritos().subscribe((res: any) => {
       this.distritos = res;
     })
-  } */
+  }
 
   getFile(e): any {
     const archivo = e.target.files[0];
@@ -90,7 +92,7 @@ export class UserAddComponent implements OnInit {
   })
 
   addUserForm() {
-       
+
     const user = {
       cedula: this.addUser.value.cedula,
       nombre: this.addUser.value.nombre,
@@ -104,10 +106,19 @@ export class UserAddComponent implements OnInit {
       celular: this.addUser.value.celular,
       foto: this.preview
     }
+    this.service.sendUser(user).subscribe((res: any) => {
 
-    if(this.addUser.valid){
-      //llamar servicio
-    }
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'tu usuario ha sido guardado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      this.ngOnInit();
+    })
+
 
   }
 
