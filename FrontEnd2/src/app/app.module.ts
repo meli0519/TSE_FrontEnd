@@ -10,13 +10,15 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './shared/components/main/main.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavbarComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,
