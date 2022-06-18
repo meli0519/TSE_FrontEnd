@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       if(dataResponse != null){
       localStorage.setItem("token", dataResponse.id_usuario.toString());
       localStorage.setItem("departament",dataResponse.id_departamento.toString());
-      //this.router.navigate(['main'])
+      this.router.navigate(['main'])
       
       console.log("entro al main");
       }else{
