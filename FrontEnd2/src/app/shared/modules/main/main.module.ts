@@ -5,9 +5,9 @@ import { MainRoutingModule } from './main-routing.module';
 import { DepartmentComponent } from '../../components/department/department.component';
 import { UserComponent } from '../../components/user/user.component';
 import {HttpClientModule} from '@angular/common/http';
-/* import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog'
 import { MatButtonModule }from '@angular/material/button'
- */
+ 
 import { UserAddComponent } from '../../components/user/user-add/user-add.component';
 import { UserEditComponent } from '../../components/user/user-edit/user-edit.component';
 
@@ -21,7 +21,9 @@ import { UserEditComponent } from '../../components/user/user-edit/user-edit.com
   imports: [
     CommonModule,
     MainRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatButtonModule
   ]
 })
 export class MainModule { }
