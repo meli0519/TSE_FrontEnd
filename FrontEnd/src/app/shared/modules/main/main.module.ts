@@ -6,7 +6,6 @@ import { MatButtonModule }from '@angular/material/button'
 import { DepartmentComponent } from '../../components/department/department.component';
 import { PruebaComponent } from '../../components/prueba/prueba.component';
 import { CommonModule } from '@angular/common';
-import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { UserComponent } from '../../components/user/user.component';
 import { AddComponent } from '../../components/user/add/add.component';
@@ -26,8 +25,7 @@ import { EditComponent } from '../../components/user/edit/edit.component';
     ReactiveFormsModule, 
     FormsModule,
     MatDialogModule,
-    MatButtonModule
-    MainRoutingModule,
+    MatButtonModule,
     ReactiveFormsModule, 
     FormsModule,
     HttpClientModule
