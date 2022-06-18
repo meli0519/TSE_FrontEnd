@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import {FormGroup, FormControl, Validator, Validators} from '@angular/forms';
+import {LoginServiceService } from '../../service/login-service.service';
+import {Router } from '@angular/router';
+import {LoginI} from '../../models/login.interface';
+import {ResponseI} from '../../models/login.response';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,9 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm = new FormGroup({
+    user: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+  });
+
+  constructor(private service:LoginServiceService, private router: Router) { }
 
   ngOnInit(): void {
-  }
+  } 
 
+  onLogin(form: LoginI){
+    this.service.sendLogin(form).subscribe(data =>{
+      console.log(data);
+      let dataResponse: ResponseI = data
+      if(dataResponse != null){
+      localStorage.setItem("token", dataResponse.id_usuario.toString());
+      localStorage.setItem("departament",dataResponse.id_departamento.toString());
+      //this.router.navigate(['main'])
+      
+      console.log("entro al main");
+      }else{
+        console.log("error en la contraseña o usuario")
+      }
+    })
+  }
 }
+
+
