@@ -60,9 +60,9 @@ export class UserAddComponent implements OnInit {
   }
 
   getDistritos() {
-    this.depserv.getDistritos().subscribe((res: any) => {
+    /* this.depserv.getDistritos().subscribe((res: any) => {
       this.distritos = res;
-    })
+    }) */
   }
 
   getFile(e): any {

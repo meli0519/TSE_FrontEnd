@@ -18,6 +18,7 @@ import { MainComponent } from './shared/components/main/main.component';
     NavbarComponent,
     LoginComponent,
     MainComponent,
+    
   ],
   imports: [
     BrowserModule,

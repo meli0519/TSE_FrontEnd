@@ -5,3 +5,8 @@ export interface DepartmentI{
     pais: string;
 
 }
+
+export interface NewDepartment{
+    descripcion: string;
+    distrito: number;
+}

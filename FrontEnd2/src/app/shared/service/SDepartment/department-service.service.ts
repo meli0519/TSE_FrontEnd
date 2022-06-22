@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
 import {DepartmentI} from '../../models/department.interface'
 @Injectable({
@@ -27,9 +27,16 @@ export class DepartmentServiceService {
     return this.http.delete(this.URL+'deleteDepartment/'+idDepartment);
   }
 
-  getDistritos(): Observable<any>{
+  getDistritos(id: number): Observable<any>{
    
-    var result = this.http.get(this.URL+'getDistrito');
+    var result = this.http.get(this.URL+'getDistrito/'+id);
+    return result;
+    
+  }
+
+  getCantones(id: number): Observable<any>{
+   
+    var result = this.http.get(this.URL+'getCantones/'+id);
     return result;
     
   }

@@ -10,13 +10,17 @@ import { MatButtonModule }from '@angular/material/button'
  
 import { UserAddComponent } from '../../components/user/user-add/user-add.component';
 import { UserEditComponent } from '../../components/user/user-edit/user-edit.component';
+import { AddComponent } from '../../../shared/components/department/add/add.component';
+import { EditComponent } from '../../../shared/components/department/edit/edit.component';
 
 @NgModule({
   declarations: [
     DepartmentComponent,
     UserComponent,
     UserAddComponent,
-    UserEditComponent
+    UserEditComponent,
+    AddComponent,
+    EditComponent,
   ],
   imports: [
     CommonModule,

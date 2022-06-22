@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DepartmentServiceService} from '../../service/SDepartment/department-service.service';
 import {DepartmentI} from '../..//models/department.interface';
-import {FormGroup, FormControl, Validator, Validators} from '@angular/forms';
+
 import Swal from 'sweetalert2'
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-department',
@@ -11,15 +12,11 @@ import Swal from 'sweetalert2'
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor(private service: DepartmentServiceService) { }
+  constructor(private service: DepartmentServiceService, private router: Router) { }
 
   distritos: any
   department: any;
-  departmentForm = new FormGroup({
-    department: new FormControl('', Validators.required),
-    pais: new FormControl('', Validators.required),
-    selectDistrit: new FormControl('', Validators.required)
-  });
+  
   ngOnInit(): void { 
     this.getData();
   }
@@ -27,9 +24,13 @@ export class DepartmentComponent implements OnInit {
   getData(){
     this.service.getDepartment().subscribe((res: any) => {
      this.department = res;
-     console.log(this.department)
+     
    }) 
  }
+
+ sendDepartment(){
+  this.router.navigate(['/main/addDepartment']); 
+}
 
  editDepartment(idDepartment: Number){
   console.log(idDepartment);
@@ -56,7 +57,7 @@ export class DepartmentComponent implements OnInit {
         timer: 1500
       })
     }
-    console.log(idDepartment);
+    
      this.service.deleteDepartmentByID(idDepartment).subscribe((res: any) => {
       console.log('eliminado exitosamente')
       this.ngOnInit();
