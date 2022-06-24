@@ -67,15 +67,30 @@ export class UserAddComponent implements OnInit {
 
   getFile(e): any {
     const archivo = e.target.files[0];
-    this.base64(archivo).then((img: any) => {
-      this.preview = img.base;
-    })
+    var allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    console.log(archivo);
+    if (!allowedExtensions.exec(archivo.name)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El formato no esta permitido!',
+        footer: '<a>Solo formatos .jpg|.jpeg|.png|.gif</a>'
+      })
+
+      this.addUser.get('foto').setValue('');
+
+    } else {
+      this.base64(archivo).then((img: any) => {
+        this.preview = img.base;
+      })
+    }
   }
 
   base64 = async ($e: any) => new Promise((resolve, reject) => {
     try {
       const reader = new FileReader();
       reader.readAsDataURL($e);
+
       reader.onload = () => {
         resolve({
           base: reader.result
@@ -98,16 +113,15 @@ export class UserAddComponent implements OnInit {
       nombre: this.addUser.value.nombre,
       apellidos: this.addUser.value.apellidos,
       fechaNacimiento: this.addUser.value.fechaNacimiento,
-      sexo: this.addUser.value.sexo,
-      departamento: this.addUser.value.departamento,
-      distrito: this.addUser.value.distrito,
+      id_sexo: this.addUser.value.sexo,
+      id_departamento: this.addUser.value.departamento,
+      id_distrito: this.addUser.value.distrito,
       correo: this.addUser.value.correo,
       pasword: this.addUser.value.pasword,
       celular: this.addUser.value.celular,
       foto: this.preview
     }
     this.service.sendUser(user).subscribe((res: any) => {
-
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -115,8 +129,8 @@ export class UserAddComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+      this.dialog.close();
 
-      this.ngOnInit();
     })
 
 

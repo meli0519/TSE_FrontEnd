@@ -1,6 +1,6 @@
 <div mat-dialog-content>
     <div mat-dialog-actions class="mat-dialog-actions">
-        <form [formGroup]="addUser" (ngSubmit)="addUserForm()" #formDir="ngForm">
+        <form [formGroup]="addUser" (ngSubmit)="addUserForm()" class="form" #formDir="ngForm">
             <div class='row'>
                 <div class='col-sm-6'>
                     <label for='cedula' class="form-label">Cedula</label>
@@ -20,7 +20,7 @@
                 <div class='col-sm-6'>
                     <label for='fechaNacimiento' class="form-label">fecha Nacimiento</label>
                     <input class='form-control' type='date' formControlName="fechaNacimiento" id='fechaNacimiento'
-                        required />
+                    min="1932-01-01" max="2004-12-31"  required />
                 </div>
             </div>
 

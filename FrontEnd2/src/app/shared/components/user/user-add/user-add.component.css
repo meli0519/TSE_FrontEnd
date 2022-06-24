@@ -1,3 +1,6 @@
+ .form label{
+    margin:5px;
+}
 
 .mat-dialog-actions{
     padding: 8px 0;

@@ -24,4 +24,9 @@ export class UserServiceService {
     return this.http.post(this.URL+'add',user);
   }
 
+  updateUser(user: any): Observable<any>{
+    console.log(user);
+    return this.http.put(this.URL+'update',user);
+  }
+
 }
