@@ -15,16 +15,16 @@ export class EditComponent implements OnInit {
   departmentForm = new FormGroup({
     department: new FormControl('', Validators.required),
     selectProvincia: new FormControl(0, Validators.required),
-    selectCanton: new FormControl({value: 0,disabled:true},Validators.required),
-    selectDistrit: new FormControl({value: 0,disabled:true},Validators.required),
+    selectCanton: new FormControl({value: 0},Validators.required),
+    selectDistrit: new FormControl({value: 0},Validators.required),
     
   });
   constructor(private service: DepartmentServiceService) { 
-    this.stateDisabled =false;
+   
   }
 
   ngOnInit(): void {
-    console.log(this.idDepartment);
+   
     
   }
 
@@ -32,7 +32,7 @@ export class EditComponent implements OnInit {
     
     if(this.idDepartment != 0){
      
-    
+      this.stateDisabled=false;
       this.getDataDepartment();
      
      
@@ -41,6 +41,7 @@ export class EditComponent implements OnInit {
   
 
   getDataDepartment(){
+    
    
     this.service.getDepartmentForId(this.idDepartment).subscribe((res: any) => {
     
@@ -50,43 +51,59 @@ export class EditComponent implements OnInit {
       this.departmentForm.get("selectCanton").setValue(res.idCanton);
       this.onChangeCanton();
       this.departmentForm.get("selectDistrit").setValue(res.id_distrito); 
-      this.stateDisabled=true;
+     
+      
+     
+   
+      
   });
 }
 
-  sendDepartmentEdit(form: any){
-   
-    /* let newDepartment ={
-    descripcion: form.department,
-    id_distrito: Number(form.selectDistrit),
-    id_pais: 1
-   } 
+
+
+  sendDepartmentEdited(form: any){   
+  
+    let updateDepartment ={
+      id_departamento: this.idDepartment,
+      descripcion: form.department,
+      id_distrito: Number(form.selectDistrit),
+      id_pais: 1
+    } 
+
+    console.log(updateDepartment);
     
-    this.service.sendDepartment(newDepartment).subscribe(data =>{
-    console.log(data);
-  });  */
+    
+
+      this.service.updateDepartment(updateDepartment).subscribe((data: any) =>{
+     
+      });   
    
   }
 
   onChangeProvincia(){
-    if(this.stateDisabled){
-      this.departmentForm.get("selectCanton").enable();
-    }
-  
+   
    this.service.getCantones(this.departmentForm.get("selectProvincia").value).subscribe((res: any) => {    
-   this.cantones = res;
+   this.cantones = res;    
+        if(this.stateDisabled){
+          this.departmentForm.get("selectCanton").setValue(0);
+          this.departmentForm.get("selectDistrit").setValue(0); 
+          this.departmentForm.get("selectDistrit").disable();
+        }  
    })   
  }
+
  onChangeCanton(){
-  if(this.stateDisabled){
-    this.departmentForm.get("selectDistrit").enable();
-  }
-  
+   
    this.service.getDistritos(this.departmentForm.get("selectCanton").value)
-   .subscribe((res: any) => {
-     
+   .subscribe((res: any) => {    
      this.distritos = res;
-     
+  
+      if(this.stateDisabled){
+        this.departmentForm.get("selectDistrit").setValue(0); 
+        this.departmentForm.get("selectDistrit").enable();
+      }
+      this.stateDisabled=true;
+    
    }) 
    
  }

@@ -65,7 +65,7 @@ export class UserEditComponent implements OnInit {
       this.distritos = res;
     }) 
   }
-
+  
   fillForm() {
     console.log(this.user.user.cedula);
     this.editUser.get('cedula').setValue(this.user.user.cedula);

@@ -21,6 +21,9 @@ export class DepartmentServiceService {
     return this.http.post(this.URL+'sendDepartment',department);
   }
 
+  updateDepartment(department: any): Observable<any>{
+    return this.http.put(this.URL+'updateDepartment',department);
+  }
 
   deleteDepartmentByID(idDepartment: number){
     
