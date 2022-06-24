@@ -12,10 +12,15 @@ import {Router } from '@angular/router';
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor(private service: DepartmentServiceService, private router: Router) { }
-
+  idDepartment: number;
   distritos: any
   department: any;
+   
+  constructor(private service: DepartmentServiceService, private router: Router) {
+    this.idDepartment =0;
+   }
+
+
   
   ngOnInit(): void { 
     this.getData();
@@ -32,8 +37,8 @@ export class DepartmentComponent implements OnInit {
   this.router.navigate(['/main/addDepartment']); 
 }
 
- editDepartment(idDepartment: Number){
-  console.log(idDepartment);
+ editDepartment(idDepartment: number){ 
+   this.idDepartment=idDepartment; 
 }
 
  deleteDepartment(idDepartment: number){

@@ -44,7 +44,7 @@ export class AddComponent implements OnInit {
   onChangeProvincia(){
      this.departmentForm.get("selectCanton").enable();
     this.service.getCantones(this.departmentForm.get("selectProvincia").value).subscribe((res: any) => {
-      console.log(res);
+     
      this.cantones = res;
     })  
   }

@@ -1,1 +1,76 @@
-<p>edit works!</p>
+
+
+<!-- Modal -->
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body" style="background-color: currentcolor;">
+          <div class="card">
+              <div class="card-header">
+                  <h1>Actualizacion de departamento</h1>
+              </div>
+            
+              <div class="card-body" >
+                  <form [formGroup]="departmentForm" (ngSubmit)="sendDepartmentEdit(departmentForm.value)"> 
+  
+                      <div class="form-group"> <!-- Nombre completo --> 
+                          <label for="nombreD" class="control-label">Nombre de departamento</label> 
+                          <input type="text" class="form-control" formControlName="department" id="nombreD" name="nombreD" placeholder="Ej: Recursos humanos"> 
+                      </div>     
+                                     
+                                              
+                      <div class="form-group"> <!-- Botón de estado --> 
+                          <label for="provincia" class="control-label" >Provincia</label> 
+                          <select class="form-control" id="provincia" formControlName="selectProvincia" (change)="onChangeProvincia()">  
+                              <option value="0" disabled="true">Elija una provincia</option>                
+                              <option value="1">San José</option> 
+                              <option value="2">Alajuela</option>
+                              <option value="3">Cartago</option>
+                              <option value="4">Heredia</option>
+                              <option value="5">Guanacaste</option>
+                              <option value="6">Puntarenas</option>
+                              <option value="7">Limón</option>
+                              <option value="8">Consulado</option>
+                          </select>                     
+                      </div>      
+                  
+                      <div class="form-group"> <!-- Botón de estado --> 
+                          <label for="canton" class="control-label" >Cantón</label> 
+                          <select class="form-control" id="canton" formControlName="selectCanton" (change)="onChangeCanton()">  
+                              <option value="0" disabled="true">Elija un cantón</option>                  
+                              <option  *ngFor="let canton of cantones" [value]="canton.id_canton"> 
+                                  {{canton.descripcion}}
+                              </option> 
+                          </select>                     
+                      </div>                                     
+                                              
+                      <div class="form-group"> <!-- Botón de estado --> 
+                          <label for="distrito" class="control-label" >Distrito</label> 
+                          
+                          <select class="form-control" id="distrito"  formControlName="selectDistrit">
+                              <option value="0" selected="true" disabled="true">Elija un distrito</option>                  
+                               <option  *ngFor="let dis of distritos" [value]="dis.id_distrito"> 
+                                  {{dis.descripcion}}
+                              </option>  
+                          </select>                     
+                      </div> 
+                             
+                      <div class="form-group">  
+                          <button type="submit" class="btn btn-primary">Registrar</button> 
+                      </div>      
+                      
+                  </form>
+              </div>
+          </div>
+        </div>
+        
+      </div>
+  
+    </div>
+  </div>

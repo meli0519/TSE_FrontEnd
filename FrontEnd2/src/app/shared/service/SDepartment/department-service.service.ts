@@ -34,6 +34,13 @@ export class DepartmentServiceService {
     
   }
 
+  getDepartmentForId(id: number): Observable<any>{
+   
+    var result = this.http.get(this.URL+'getDepartmentForId/'+id);
+    return result;
+    
+  }
+
   getCantones(id: number): Observable<any>{
    
     var result = this.http.get(this.URL+'getCantones/'+id);
