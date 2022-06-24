@@ -61,9 +61,9 @@ export class UserEditComponent implements OnInit {
   }
 
   getDistritos() {
-    this.depserv.getDistritos().subscribe((res: any) => {
+    this.service.getDistritos().subscribe((res: any) => {
       this.distritos = res;
-    })
+    }) 
   }
 
   fillForm() {

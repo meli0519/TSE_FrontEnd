@@ -29,4 +29,8 @@ export class UserServiceService {
     return this.http.put(this.URL+'update',user);
   }
 
+  getDistritos(): Observable<any>{
+    return this.http.get(this.URL+'getDistritos');
+  }
+
 }

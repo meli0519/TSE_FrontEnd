@@ -12,6 +12,7 @@ import { UserAddComponent } from '../../components/user/user-add/user-add.compon
 import { UserEditComponent } from '../../components/user/user-edit/user-edit.component';
 import { AddComponent } from '../../../shared/components/department/add/add.component';
 import { EditComponent } from '../../../shared/components/department/edit/edit.component';
+import { RequestComponent } from '../../components/request/request.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EditComponent } from '../../../shared/components/department/edit/edit.c
     UserEditComponent,
     AddComponent,
     EditComponent,
+    RequestComponent
   ],
   imports: [
     CommonModule,
