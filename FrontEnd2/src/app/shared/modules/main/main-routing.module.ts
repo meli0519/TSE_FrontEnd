@@ -5,6 +5,7 @@ import { UserComponent } from '../../components/user/user.component';
 import { AddComponent } from '../../../shared/components/department/add/add.component';
 import { EditComponent } from '../../../shared/components/department/edit/edit.component';
 import { RequestComponent } from '../../../shared/components/request/request.component'
+import { ResponseComponent } from '../../components/response/response.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
       {path: 'user', component:  UserComponent},
       {path: 'addDepartment', component: AddComponent},
       {path: 'editDepartment', component:  EditComponent},
-      {path: 'request', component:  RequestComponent}
+      {path: 'request', component:  RequestComponent},
+      {path: 'response', component: ResponseComponent}
     ]
   }
 ];

@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("departament",dataResponse.id_departamento.toString());
       this.router.navigate(['main'])
       
-      console.log("entro al main");
       }else{
         console.log("error en la contraseña o usuario")
       }

@@ -10,9 +10,10 @@ import { MatButtonModule }from '@angular/material/button'
  
 import { UserAddComponent } from '../../components/user/user-add/user-add.component';
 import { UserEditComponent } from '../../components/user/user-edit/user-edit.component';
-import { AddComponent } from '../../../shared/components/department/add/add.component';
-import { EditComponent } from '../../../shared/components/department/edit/edit.component';
+import { AddComponent } from '../../components/department/add/add.component';
+import { EditComponent } from '../../components/department/edit/edit.component';
 import { RequestComponent } from '../../components/request/request.component';
+import { ResponseComponent } from '../../components/response/response.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { RequestComponent } from '../../components/request/request.component';
     UserEditComponent,
     AddComponent,
     EditComponent,
-    RequestComponent
+    RequestComponent,
+    ResponseComponent,
+    
   ],
   imports: [
     CommonModule,
