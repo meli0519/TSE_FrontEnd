@@ -3,6 +3,8 @@ import {DepartmentServiceService} from '../../../service/SDepartment/department-
 import {FormGroup, FormControl, Validator, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {Router } from '@angular/router';
+declare var $:any
+
 
 @Component({
   selector: 'app-edit',
@@ -61,8 +63,8 @@ export class EditComponent implements OnInit {
 
 
   sendDepartmentEdited(form: any){   
-  
-    let updateDepartment ={
+    $("#myModal2").modal('hide');
+   /*  let updateDepartment ={
       id_departamento: this.idDepartment,
       descripcion: form.department,
       id_distrito: Number(form.selectDistrit),
@@ -77,8 +79,8 @@ export class EditComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-      //  $("#myModal2").modal("show");
-      });   
+       
+      });    */
    
   }
 
