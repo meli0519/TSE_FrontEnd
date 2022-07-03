@@ -20,6 +20,7 @@ import { MainComponent } from './shared/components/main/main.component';
     LoginComponent,
     MainComponent,
    
+   
   ],
   imports: [
     BrowserModule,

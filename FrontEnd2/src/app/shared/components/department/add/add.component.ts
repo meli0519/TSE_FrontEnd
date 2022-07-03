@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {DepartmentServiceService} from '../../../service/SDepartment/department-service.service';
 import {FormGroup, FormControl, Validator, Validators} from '@angular/forms';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -35,7 +35,13 @@ export class AddComponent implements OnInit {
    }
     
    this.service.sendDepartment(newDepartment).subscribe(data =>{
-    console.log(data);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Departamento registrado correctamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
   });
    
   }

@@ -42,7 +42,7 @@ export class DepartmentComponent implements OnInit {
 }
 
  deleteDepartment(idDepartment: number){
-  console.log(idDepartment);
+ 
 
   Swal.fire({
     title: 'Esta seguro de eliminar?',

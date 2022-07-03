@@ -14,6 +14,7 @@ import { AddComponent } from '../../components/department/add/add.component';
 import { EditComponent } from '../../components/department/edit/edit.component';
 import { RequestComponent } from '../../components/request/request.component';
 import { ResponseComponent } from '../../components/response/response.component';
+import { ViewRequestComponent } from '../../components/view-request/view-request.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ResponseComponent } from '../../components/response/response.component'
     EditComponent,
     RequestComponent,
     ResponseComponent,
+    ViewRequestComponent,
     
   ],
   imports: [

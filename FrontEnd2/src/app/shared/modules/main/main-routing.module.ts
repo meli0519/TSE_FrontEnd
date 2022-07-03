@@ -6,6 +6,7 @@ import { AddComponent } from '../../../shared/components/department/add/add.comp
 import { EditComponent } from '../../../shared/components/department/edit/edit.component';
 import { RequestComponent } from '../../../shared/components/request/request.component'
 import { ResponseComponent } from '../../components/response/response.component';
+import { ViewRequestComponent } from '../../components/view-request/view-request.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
       {path: 'addDepartment', component: AddComponent},
       {path: 'editDepartment', component:  EditComponent},
       {path: 'request', component:  RequestComponent},
-      {path: 'response', component: ResponseComponent}
+      {path: 'response', component: ResponseComponent},
+      {path: 'viewRequest/:id_solicitud', component: ViewRequestComponent}
     ]
   }
 ];

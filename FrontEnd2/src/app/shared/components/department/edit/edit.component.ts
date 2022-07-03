@@ -1,6 +1,8 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {DepartmentServiceService} from '../../../service/SDepartment/department-service.service';
 import {FormGroup, FormControl, Validator, Validators} from '@angular/forms';
+import Swal from 'sweetalert2';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -19,7 +21,7 @@ export class EditComponent implements OnInit {
     selectDistrit: new FormControl({value: 0},Validators.required),
     
   });
-  constructor(private service: DepartmentServiceService) { 
+  constructor(private service: DepartmentServiceService,private router: Router) { 
    
   }
 
@@ -51,13 +53,10 @@ export class EditComponent implements OnInit {
       this.departmentForm.get("selectCanton").setValue(res.idCanton);
       this.onChangeCanton();
       this.departmentForm.get("selectDistrit").setValue(res.id_distrito); 
-     
-      
-     
-   
-      
+        
   });
 }
+
 
 
 
@@ -70,12 +69,15 @@ export class EditComponent implements OnInit {
       id_pais: 1
     } 
 
-    console.log(updateDepartment);
-    
-    
-
       this.service.updateDepartment(updateDepartment).subscribe((data: any) =>{
-     
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Departamento actualizado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      //  $("#myModal2").modal("show");
       });   
    
   }
