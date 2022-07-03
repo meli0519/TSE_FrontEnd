@@ -1,7 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {DepartmentServiceService} from '../../../service/SDepartment/department-service.service';
 import {FormGroup, FormControl, Validator, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
+declare var $:any;
+
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -42,6 +44,7 @@ export class AddComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
+    $("#myModal2").modal('hide');   
   });
    
   }

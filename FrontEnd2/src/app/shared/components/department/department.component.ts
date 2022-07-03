@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {DepartmentServiceService} from '../../service/SDepartment/department-service.service';
 import {DepartmentI} from '../..//models/department.interface';
-
 import Swal from 'sweetalert2'
 import {Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css']
 })
-export class DepartmentComponent implements OnInit {
+export class DepartmentComponent implements OnInit, OnDestroy {
 
+  suscription: Subscription;
   idDepartment: number;
   distritos: any
   department: any;
@@ -20,10 +21,16 @@ export class DepartmentComponent implements OnInit {
     this.idDepartment =0;
    }
 
-
-  
   ngOnInit(): void { 
     this.getData();
+
+    this.suscription = this.service.refresh$().subscribe(() =>{
+      this.getData();
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.suscription.unsubscribe();
   }
 
   getData(){
@@ -64,8 +71,6 @@ export class DepartmentComponent implements OnInit {
     }
     
      this.service.deleteDepartmentByID(idDepartment).subscribe((res: any) => {
-      console.log('eliminado exitosamente')
-      this.ngOnInit();
     }) 
   })
 }

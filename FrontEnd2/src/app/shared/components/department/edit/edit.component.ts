@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, OnChanges } from '@angular/core';
 import {DepartmentServiceService} from '../../../service/SDepartment/department-service.service';
 import {FormGroup, FormControl, Validator, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ declare var $:any
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditComponent implements OnInit, OnChanges {
   @Input() idDepartment: number;
   distritos: any;
   cantones: any;
@@ -63,8 +63,8 @@ export class EditComponent implements OnInit {
 
 
   sendDepartmentEdited(form: any){   
-    $("#myModal2").modal('hide');
-   /*  let updateDepartment ={
+   
+      let updateDepartment ={
       id_departamento: this.idDepartment,
       descripcion: form.department,
       id_distrito: Number(form.selectDistrit),
@@ -79,8 +79,9 @@ export class EditComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-       
-      });    */
+        $("#myModal2").modal('hide');     
+      });    
+     
    
   }
 
