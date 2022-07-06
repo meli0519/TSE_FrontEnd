@@ -155,4 +155,9 @@ export class RequestComponent implements OnInit {
     this.archivosReq.splice(position,1);
   }
 
+  viewContent(id: number){
+    console.log(id);
+   this.router.navigate(['/main/viewRequest',id]); 
+ }
+
 }

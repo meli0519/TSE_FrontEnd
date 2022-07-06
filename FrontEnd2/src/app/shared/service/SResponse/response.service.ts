@@ -20,4 +20,17 @@ export class ResponseService {
 
     return this.http.get(this.URL+'getRequestForId/'+id);
   }
+
+  getDocuments(id: number): Observable<any> {
+    return this.http.get(this.URL+'getDocuments/'+id);
+  }
+
+  getAllResponseStatus(): Observable<any> {
+
+    return this.http.get(this.URL+'getAllResponseState');
+  }
+
+  addResponse(response: any): Observable<any>{
+    return this.http.post(this.URL+'/addResponse',response);
+  }
 }
