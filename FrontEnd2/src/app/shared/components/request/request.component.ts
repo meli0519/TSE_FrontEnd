@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RequestServiceService } from '../../service/SRequest/request-service.service'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {Router } from '@angular/router';
-import Swal from 'sweetalert2'
-
+import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
+declare var $:any
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2'
 })
 export class RequestComponent implements OnInit {
 
+  suscription: Subscription;
   clasificadores: any;
   addRequest: FormGroup;
   archivosReq: Array<string> = [];
@@ -35,6 +37,10 @@ export class RequestComponent implements OnInit {
   ngOnInit(): void {
     this.getclasificadores();
     this.getSolicitudes();
+
+    this.suscription = this.service.refresh$().subscribe(() =>{
+      this.getSolicitudes();
+    })
   }
 
   getSolicitudes(){
@@ -51,13 +57,12 @@ export class RequestComponent implements OnInit {
 
   getFiles(e): any {
     const archivos = e.target.files;
-    console.log(archivos);
+    
     var allowedExtensions = /(.jpg|.jpeg|.png|.gif|.docx|.xlsx|.pdf|.txt)$/i;
     if (archivos) {
-      console.log('holi')
+     
       for(let i=0; i<archivos.length; i++) {
-        console.log(archivos[i]);
-        console.log(archivos[i].name);
+        
         if (!allowedExtensions.exec(archivos[i].name)) {
           Swal.fire({
             icon: 'error',
@@ -75,6 +80,7 @@ export class RequestComponent implements OnInit {
         }
 
       }
+     
     }
   }
 
@@ -98,7 +104,7 @@ export class RequestComponent implements OnInit {
     }
   })
 
-  addRequestForm() {
+   async addRequestForm() {
     const request = {
       fecha_hora: new Date(),
       id_usuario: localStorage.getItem("token"),
@@ -107,7 +113,7 @@ export class RequestComponent implements OnInit {
       id_clasificador: this.addRequest.value.clasificador,
       cantidad_archivos: this.archivosReq.length
     }
-    this.service.addRequest(request).subscribe((res: any)=>{
+   this.service.addRequest(request).subscribe((res: any)=>{
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -115,8 +121,15 @@ export class RequestComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       }) 
-     // this.router.navigate(['/main/request']);
+
+      this.addRequest.get('asunto').setValue('');
+      this.addRequest.get('texto').setValue('');
+      this.addRequest.get('clasificador').setValue(0);
+      
+      
+      $("#myModal").modal('hide');
     })
+   
 
     if(this.archivosReq){
       for(let i = 0; i < this.archivosReq.length;i++){
@@ -126,15 +139,20 @@ export class RequestComponent implements OnInit {
           comentario:this.nombresFile[i],
           id_usuario:localStorage.getItem("token"),
           fecha_hora: request.fecha_hora
-        }
-
-        console.log(archivo);
-     
-        this.service.addArchivos(archivo).subscribe((res: any)=>{
+        }          
+      await this.service.addArchivos(archivo).subscribe((res: any)=>{
 
         })
       }
+      this.nombresFile.splice(0);
+      this.archivosReq.splice(0);
     }
+  }
+
+  deleteFile(nombreFile: string){
+    let position = this.nombresFile.indexOf(nombreFile);
+    this.nombresFile.splice(position,1);
+    this.archivosReq.splice(position,1);
   }
 
 }

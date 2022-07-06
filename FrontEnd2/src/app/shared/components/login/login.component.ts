@@ -4,6 +4,7 @@ import {LoginServiceService } from '../../service/login-service.service';
 import {Router } from '@angular/router';
 import {LoginI} from '../../models/login.interface';
 import {ResponseI} from '../../models/login.response';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,7 +32,13 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['main'])
       
       }else{
-        console.log("error en la contraseña o usuario")
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Error en la contraseña o usuario',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     })
   }
